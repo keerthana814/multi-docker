@@ -1,0 +1,20 @@
+sudo: required
+services:
+  - docker
+before_install:
+- docker build -t keerthana814/react-test -f ./client/Dockerfile.dev ./client
+script:
+- docker run -e CI=true keerthana814/react-test npm run test
+after_success:
+  - docker build -t keerthana814/multi-client ./client
+  - docker build -t keerthana814/multi-server ./server
+  - docker build -t keerthana814/multi-nginx ./nginx
+  - docker build -t keerthana814/multi-worker ./worker
+  # Login to Docker CLI to push the above images to docker hub
+  # Logging in
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Pushing the image to docker hub
+  - docker push keerthana814/multi-client
+  - docker push keerthana814/multi-server
+  - docker push keerthana814/multi-nginx
+  - docker push keerthana814/multi-worker
