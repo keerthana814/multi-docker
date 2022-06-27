@@ -14,8 +14,6 @@ after_success:
   # Logging in
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Pushing the image to docker hub
-  - docker tag name_image[:tag] name_user_docker/name_image[:tag]
-  docker push name_user_docker/name_image[:tag]
   - docker push keerthana814/multi-client
   - docker push keerthana814/multi-server
   - docker push keerthana814/multi-nginx
