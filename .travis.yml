@@ -6,15 +6,15 @@ before_install:
 script:
 - docker run -e CI=true keerthana814/react-test npm run test
 after_success:
-  - docker build -t keerthana814/multi-client -f ./client/DockerFile ./client
-  - docker build -t keerthana814/multi-server -f ./server/DockerFile ./server
-  - docker build -t keerthana814/multi-nginx -f ./nginx/DockerFile ./nginx
-  - docker build -t keerthana814/multi-worker -f ./worker/DockerFile ./worker
+  - docker build -t keerthanasrinivasan/keerthana814/multi-client -f ./client/DockerFile ./client
+  - docker build -t keerthanasrinivasan/keerthana814/multi-server -f ./server/DockerFile ./server
+  - docker build -t keerthanasrinivasan/keerthana814/multi-nginx -f ./nginx/DockerFile ./nginx
+  - docker build -t keerthanasrinivasan/keerthana814/multi-worker -f ./worker/DockerFile ./worker
   # Login to Docker CLI to push the above images to docker hub
   # Logging in
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Pushing the image to docker hub
-  - docker push keerthana814/multi-client:latest
-  - docker push keerthana814/multi-server:latest
-  - docker push keerthana814/multi-nginx:latest
-  - docker push keerthana814/multi-worker:latest
+  - docker push keerthanasrinivasan/keerthana814/multi-client:latest
+  - docker push keerthanasrinivasan/keerthana814/multi-server:latest
+  - docker push keerthanasrinivasan/keerthana814/multi-nginx:latest
+  - docker push keerthanasrinivasan/keerthana814/multi-worker:latest
