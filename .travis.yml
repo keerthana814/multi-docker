@@ -13,7 +13,7 @@ after_success:
   # Login to Docker CLI to push the above images to docker hub
   # Logging in
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker login -u $DOCKER_ID" -p "$DOCKER_PASSWORD"" docker.io
+  - docker login -u $DOCKER_ID" -p "$DOCKER_PASSWORD" docker.io
   # Pushing the image to docker hub
   - docker push keerthanasrinivasan/keerthana814/multi-client:latest
   - docker push keerthanasrinivasan/keerthana814/multi-server:latest
